@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A comprehensive UX Writing Skill for Claude Code. Write accessible, user-centered interface copy with research-backed best practices.">
     <title>UX Writing Skill for Claude Code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,23 +15,43 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --cream: #FAF8EE;
+            --ink: #1a1614;
+            --ink-light: #4a4540;
+            --ink-muted: #8a857f;
+            --accent: #d4a574;
+            --accent-dark: #b88a5f;
+            --border: rgba(26, 22, 20, 0.08);
+            --border-dark: rgba(26, 22, 20, 0.15);
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            background: #ffffff;
+            font-family: 'Source Serif 4', Georgia, serif;
+            line-height: 1.75;
+            color: var(--ink);
+            background: var(--cream);
+            font-size: 18px;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 40px;
         }
 
+        /* Header */
         header {
-            border-bottom: 1px solid #e5e5e5;
-            padding: 20px 0;
-            margin-bottom: 60px;
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: var(--cream);
+            z-index: 100;
+            backdrop-filter: blur(10px);
         }
 
         header .container {
@@ -38,269 +61,326 @@
         }
 
         header h1 {
-            font-size: 18px;
-            font-weight: 600;
-            color: #1a1a1a;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--ink);
+        }
+
+        header nav {
+            display: flex;
+            gap: 48px;
         }
 
         header nav a {
-            margin-left: 24px;
-            color: #666;
+            color: var(--ink-light);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 400;
+            transition: color 0.3s ease;
+            letter-spacing: 0.3px;
         }
 
         header nav a:hover {
-            color: #1a1a1a;
+            color: var(--ink);
         }
 
+        /* Hero */
         .hero {
+            padding: 160px 0 200px;
             text-align: center;
-            padding: 60px 0 80px;
         }
 
         .hero h2 {
-            font-size: 48px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
-            color: #1a1a1a;
+            font-size: clamp(48px, 7vw, 96px);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 40px;
+            color: var(--ink);
+            letter-spacing: -0.02em;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .hero p {
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 40px;
+        .hero .subtitle {
+            font-size: clamp(20px, 2.5vw, 28px);
+            color: var(--ink-light);
+            margin-bottom: 80px;
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
+            font-weight: 300;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 16px;
+            gap: 24px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .btn-primary {
-            background: #1a1a1a;
-            color: white;
-            padding: 14px 32px;
-            border-radius: 8px;
+        .btn {
+            padding: 20px 48px;
             text-decoration: none;
-            font-weight: 600;
             font-size: 16px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-dark);
             display: inline-block;
-            transition: background 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--ink);
+            color: var(--cream);
+            border-color: var(--ink);
         }
 
         .btn-primary:hover {
-            background: #333;
+            background: var(--ink-light);
+            border-color: var(--ink-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(26, 22, 20, 0.15);
         }
 
         .btn-secondary {
-            background: white;
-            color: #1a1a1a;
-            padding: 14px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            display: inline-block;
-            border: 1px solid #e5e5e5;
-            transition: border-color 0.2s;
+            background: transparent;
+            color: var(--ink);
         }
 
         .btn-secondary:hover {
-            border-color: #1a1a1a;
+            background: var(--ink);
+            color: var(--cream);
+            transform: translateY(-2px);
         }
 
-        .features {
-            padding: 80px 0;
-            background: #fafafa;
-        }
-
-        .features h3 {
-            font-size: 32px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
-            border: 1px solid #e5e5e5;
-        }
-
-        .feature-card h4 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .feature-card p {
-            color: #666;
-            font-size: 15px;
-            line-height: 1.6;
-        }
-
-        .feature-card ul {
-            list-style: none;
-            margin-top: 16px;
-        }
-
-        .feature-card li {
-            color: #666;
-            font-size: 14px;
-            padding: 6px 0;
-            padding-left: 24px;
-            position: relative;
-        }
-
-        .feature-card li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #22c55e;
-            font-weight: 700;
-        }
-
-        .integrations {
-            padding: 80px 0;
-        }
-
-        .integrations h3 {
-            font-size: 32px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .integrations p {
-            text-align: center;
-            color: #666;
-            font-size: 18px;
-            margin-bottom: 40px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .integration-card {
-            background: #fafafa;
-            padding: 40px;
-            border-radius: 12px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .integration-card h4 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .integration-card code {
-            background: #1a1a1a;
-            color: #22c55e;
-            padding: 16px;
-            border-radius: 8px;
-            display: block;
-            margin: 16px 0;
-            font-size: 14px;
-            overflow-x: auto;
-        }
-
+        /* Stats */
         .stats {
-            padding: 80px 0;
-            background: #fafafa;
+            padding: 120px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            gap: 80px;
             text-align: center;
-        }
-
-        .stat {
-            padding: 20px;
         }
 
         .stat-number {
-            font-size: 48px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 8px;
+            font-size: 72px;
+            font-weight: 300;
+            color: var(--ink);
+            margin-bottom: 16px;
+            line-height: 1;
+            letter-spacing: -0.02em;
         }
 
         .stat-label {
-            color: #666;
             font-size: 14px;
+            color: var(--ink-muted);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            font-weight: 400;
         }
 
-        .quickstart {
-            padding: 80px 0;
+        /* Features */
+        .features {
+            padding: 160px 0;
         }
 
-        .quickstart h3 {
-            font-size: 32px;
-            font-weight: 700;
+        .section-title {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 300;
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 120px;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 80px;
+        }
+
+        .feature-card {
+            padding: 0;
+        }
+
+        .feature-card h4 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+
+        .feature-card p {
+            color: var(--ink-light);
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+
+        .feature-card ul {
+            list-style: none;
+        }
+
+        .feature-card li {
+            color: var(--ink-light);
+            font-size: 16px;
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            line-height: 1.6;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .feature-card li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-card li:before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 400;
+        }
+
+        /* Integrations */
+        .integrations {
+            padding: 160px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .integrations .section-title {
+            margin-bottom: 40px;
+        }
+
+        .integrations .intro {
+            text-align: center;
+            color: var(--ink-light);
+            font-size: 20px;
+            margin-bottom: 80px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .integration-card {
+            background: rgba(212, 165, 116, 0.06);
+            border: 1px solid var(--border);
+            padding: 80px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .integration-card h4 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--ink-muted);
+        }
+
+        .integration-card code {
+            background: var(--ink);
+            color: var(--accent);
+            padding: 32px;
+            display: block;
+            margin: 32px 0;
+            font-size: 15px;
+            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            overflow-x: auto;
+            line-height: 1.6;
+            border: 1px solid var(--ink);
+        }
+
+        .integration-card .help-text {
+            margin-top: 32px;
+            color: var(--ink-light);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .integration-card .guide-link {
+            margin-top: 32px;
+            display: inline-block;
+        }
+
+        .integration-card .guide-link a {
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: 400;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 2px;
+            transition: border-color 0.3s ease;
+        }
+
+        .integration-card .guide-link a:hover {
+            border-color: var(--ink);
+        }
+
+        /* Quick Start */
+        .quickstart {
+            padding: 160px 0;
         }
 
         .steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 80px;
+            margin-bottom: 80px;
         }
 
         .step {
-            text-align: center;
+            text-align: left;
+            padding: 48px 0;
+            border-top: 1px solid var(--border-dark);
         }
 
         .step-number {
-            width: 48px;
-            height: 48px;
-            background: #1a1a1a;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 20px;
-            margin: 0 auto 20px;
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--ink-muted);
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .step h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 12px;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: var(--ink);
+            letter-spacing: -0.01em;
         }
 
         .step p {
-            color: #666;
-            font-size: 15px;
+            color: var(--ink-light);
+            font-size: 17px;
+            line-height: 1.7;
         }
 
-        footer {
-            border-top: 1px solid #e5e5e5;
-            padding: 40px 0;
+        .quickstart-cta {
+            text-align: center;
             margin-top: 80px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 80px 0;
+            margin-top: 160px;
         }
 
         footer .container {
@@ -308,36 +388,121 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 40px;
         }
 
         footer p {
-            color: #666;
-            font-size: 14px;
+            color: var(--ink-muted);
+            font-size: 16px;
         }
 
         footer a {
-            color: #666;
+            color: var(--ink-light);
             text-decoration: none;
-            margin-left: 24px;
+            transition: color 0.3s ease;
         }
 
         footer a:hover {
-            color: #1a1a1a;
+            color: var(--ink);
         }
 
+        footer nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h2,
+        .hero .subtitle,
+        .cta-buttons {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .hero .subtitle {
+            animation-delay: 0.2s;
+        }
+
+        .cta-buttons {
+            animation-delay: 0.4s;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 36px;
+            .container {
+                padding: 0 24px;
             }
 
-            .hero p {
-                font-size: 18px;
+            header {
+                padding: 40px 0;
+            }
+
+            header nav {
+                gap: 24px;
             }
 
             header nav a {
-                margin-left: 16px;
-                font-size: 13px;
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 100px 0 120px;
+            }
+
+            .hero .subtitle {
+                margin-bottom: 60px;
+            }
+
+            .stats {
+                padding: 80px 0;
+            }
+
+            .stats-grid {
+                gap: 60px;
+            }
+
+            .features {
+                padding: 100px 0;
+            }
+
+            .section-title {
+                margin-bottom: 80px;
+            }
+
+            .feature-grid {
+                gap: 60px;
+            }
+
+            .integrations {
+                padding: 100px 0;
+            }
+
+            .integration-card {
+                padding: 40px;
+            }
+
+            .quickstart {
+                padding: 100px 0;
+            }
+
+            .steps {
+                gap: 60px;
+            }
+
+            footer {
+                padding: 60px 0;
+                margin-top: 100px;
             }
 
             footer .container {
@@ -345,21 +510,40 @@
                 text-align: center;
             }
 
-            footer a {
-                margin-left: 0;
-                margin-top: 8px;
+            footer nav {
+                flex-direction: column;
+                gap: 20px;
             }
+        }
+
+        /* Refined details */
+        ::selection {
+            background: var(--accent);
+            color: var(--cream);
+        }
+
+        a {
+            position: relative;
+        }
+
+        .feature-card li {
+            transition: padding-left 0.3s ease, color 0.3s ease;
+        }
+
+        .feature-card li:hover {
+            padding-left: 40px;
+            color: var(--ink);
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>UX Writing Skill</h1>
+            <h1>UX Writing</h1>
             <nav>
-                <a href="https://github.com/content-designer/ux-writing-skill">GitHub</a>
-                <a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/figma-integration.md">Figma Integration</a>
-                <a href="https://github.com/content-designer/ux-writing-skill#usage-examples">Docs</a>
+                <a href="https://github.com/content-designer/ux-writing-skill">Repository</a>
+                <a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/figma-integration.md">Figma</a>
+                <a href="https://github.com/content-designer/ux-writing-skill#usage-examples">Documentation</a>
             </nav>
         </div>
     </header>
@@ -367,11 +551,11 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h2>Write better interface copy<br>with Claude Code</h2>
-                <p>A comprehensive skill that helps content designers and product teams create accessible, user-centered UX text following research-backed best practices.</p>
+                <h2>Write better<br>interface copy</h2>
+                <p class="subtitle">A comprehensive skill for Claude Code that helps content designers and product teams create accessible, user-centered text following research-backed best practices.</p>
                 <div class="cta-buttons">
-                    <a href="https://github.com/content-designer/ux-writing-skill/archive/refs/heads/main.zip" class="btn-primary">Download skill</a>
-                    <a href="https://github.com/content-designer/ux-writing-skill" class="btn-secondary">View on GitHub</a>
+                    <a href="https://github.com/content-designer/ux-writing-skill/archive/refs/heads/main.zip" class="btn btn-primary">Download skill</a>
+                    <a href="https://github.com/content-designer/ux-writing-skill" class="btn btn-secondary">View on GitHub</a>
                 </div>
             </div>
         </section>
@@ -381,19 +565,19 @@
                 <div class="stats-grid">
                     <div class="stat">
                         <div class="stat-number">25+</div>
-                        <div class="stat-label">Page Reference Guide</div>
+                        <div class="stat-label">Page guide</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">4</div>
-                        <div class="stat-label">Quality Standards</div>
+                        <div class="stat-label">Quality standards</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">100%</div>
-                        <div class="stat-label">Accessibility Focused</div>
+                        <div class="stat-label">Accessible</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">Open</div>
-                        <div class="stat-label">Source & Free</div>
+                        <div class="stat-number">Free</div>
+                        <div class="stat-label">Open source</div>
                     </div>
                 </div>
             </div>
@@ -401,7 +585,7 @@
 
         <section class="features">
             <div class="container">
-                <h3>What's included</h3>
+                <h3 class="section-title">What's included</h3>
                 <div class="feature-grid">
                     <div class="feature-card">
                         <h4>Accessibility guidelines</h4>
@@ -419,9 +603,9 @@
                         <p>Quantifiable benchmarks based on comprehension research and industry standards.</p>
                         <ul>
                             <li>Sentence length targets</li>
-                            <li>Comprehension rates (8 words = 100%)</li>
+                            <li>Comprehension rates</li>
                             <li>Reading level guidelines</li>
-                            <li>Character limits by content type</li>
+                            <li>Character limits by type</li>
                         </ul>
                     </div>
 
@@ -429,9 +613,9 @@
                         <h4>Expanded error patterns</h4>
                         <p>Four distinct error types with timing, location, and recovery guidance.</p>
                         <ul>
-                            <li>Validation errors (inline)</li>
-                            <li>System errors (modal/banner)</li>
-                            <li>Blocking errors (full-screen)</li>
+                            <li>Validation errors</li>
+                            <li>System errors</li>
+                            <li>Blocking errors</li>
                             <li>Permission errors</li>
                         </ul>
                     </div>
@@ -474,39 +658,39 @@
 
         <section class="integrations">
             <div class="container">
-                <h3>Figma integration</h3>
-                <p>Review and improve UX copy directly from your Figma designs. Perfect for content designers and product teams.</p>
+                <h3 class="section-title">Figma integration</h3>
+                <p class="intro">Review and improve UX copy directly from your Figma designs. Perfect for content designers and product teams.</p>
                 <div class="integration-card">
                     <h4>Quick setup</h4>
                     <code>claude mcp add --transport http figma https://mcp.figma.com/mcp</code>
-                    <p style="margin-top: 16px; color: #666;">Then share any Figma frame link with Claude to get instant UX writing feedback, accessibility audits, and specific improvements.</p>
-                    <p style="margin-top: 16px;"><a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/figma-integration.md" style="color: #1a1a1a; text-decoration: none; font-weight: 600;">Read full setup guide →</a></p>
+                    <p class="help-text">Then share any Figma frame link with Claude to get instant UX writing feedback, accessibility audits, and specific improvements.</p>
+                    <p class="guide-link"><a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/figma-integration.md">Read full setup guide →</a></p>
                 </div>
             </div>
         </section>
 
         <section class="quickstart">
             <div class="container">
-                <h3>Get started in 3 steps</h3>
+                <h3 class="section-title">Get started</h3>
                 <div class="steps">
                     <div class="step">
-                        <div class="step-number">1</div>
+                        <div class="step-number">Step one</div>
                         <h4>Download</h4>
                         <p>Download the skill and extract the ZIP file to find the ux-writing folder.</p>
                     </div>
                     <div class="step">
-                        <div class="step-number">2</div>
+                        <div class="step-number">Step two</div>
                         <h4>Install</h4>
                         <p>Copy the ux-writing folder to ~/.claude/skills/ and restart Claude Code.</p>
                     </div>
                     <div class="step">
-                        <div class="step-number">3</div>
+                        <div class="step-number">Step three</div>
                         <h4>Use</h4>
                         <p>Ask Claude to review any interface copy and it will automatically apply UX writing best practices.</p>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 60px;">
-                    <a href="https://github.com/content-designer/ux-writing-skill#installation" class="btn-secondary">View detailed instructions</a>
+                <div class="quickstart-cta">
+                    <a href="https://github.com/content-designer/ux-writing-skill#installation" class="btn btn-secondary">View detailed instructions</a>
                 </div>
             </div>
         </section>
@@ -514,12 +698,12 @@
 
     <footer>
         <div class="container">
-            <p>Built by <a href="https://www.linkedin.com/in/christopher-greer/" style="margin-left: 4px;">Christopher Greer</a> • MIT License</p>
-            <div>
+            <p>Built by <a href="https://www.linkedin.com/in/christopher-greer/">Christopher Greer</a> · MIT License</p>
+            <nav>
                 <a href="https://github.com/content-designer/ux-writing-skill/blob/main/CONTRIBUTING.md">Contributing</a>
                 <a href="https://github.com/content-designer/ux-writing-skill/blob/main/CHANGELOG.md">Changelog</a>
                 <a href="https://github.com/content-designer/ux-writing-skill/issues">Issues</a>
-            </div>
+            </nav>
         </div>
     </footer>
 </body>
