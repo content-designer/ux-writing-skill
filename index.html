@@ -154,42 +154,6 @@
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
-            position: relative;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .hero h2:hover {
-            color: #E8A87C;
-            animation: colorShift 3s ease-in-out infinite, subtleDither 0.2s linear infinite;
-        }
-
-        @keyframes colorShift {
-            0%, 100% {
-                color: #E8A87C;
-                text-shadow: 0 0 20px rgba(232, 168, 124, 0.3);
-            }
-            25% {
-                color: #d4a574;
-                text-shadow: 0 0 20px rgba(212, 165, 116, 0.3);
-            }
-            50% {
-                color: #c89968;
-                text-shadow: 0 0 20px rgba(200, 153, 104, 0.3);
-            }
-            75% {
-                color: #f4b88a;
-                text-shadow: 0 0 20px rgba(244, 184, 138, 0.3);
-            }
-        }
-
-        @keyframes subtleDither {
-            0%, 100% {
-                filter: contrast(1.05) brightness(1.02);
-            }
-            50% {
-                filter: contrast(1.08) brightness(1.05);
-            }
         }
 
         .hero .subtitle {
