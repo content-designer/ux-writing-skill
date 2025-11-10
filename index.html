@@ -143,8 +143,10 @@
         .btn-primary:hover {
             background: var(--ink-light);
             border-color: var(--ink-light);
-            transform: translateY(-2px);
+            transform: translate3d(0, -2px, 0);
             box-shadow: 0 8px 24px rgba(26, 22, 20, 0.15);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
         }
 
         .btn-secondary {
@@ -155,7 +157,9 @@
         .btn-secondary:hover {
             background: var(--ink);
             color: var(--cream);
-            transform: translateY(-2px);
+            transform: translate3d(0, -2px, 0);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
         }
 
         /* Stats */
@@ -235,11 +239,11 @@
         .feature-card li {
             color: var(--ink-light);
             font-size: 16px;
-            padding: 12px 0;
-            padding-left: 32px;
+            padding: 12px 0 12px 32px;
             position: relative;
             line-height: 1.6;
             border-bottom: 1px solid var(--border);
+            transition: color 0.3s ease;
         }
 
         .feature-card li:last-child {
@@ -249,9 +253,11 @@
         .feature-card li:before {
             content: "—";
             position: absolute;
-            left: 0;
+            left: 8px;
             color: var(--accent);
             font-weight: 400;
+            width: 16px;
+            text-align: left;
         }
 
         /* Integrations */
@@ -526,12 +532,7 @@
             position: relative;
         }
 
-        .feature-card li {
-            transition: padding-left 0.3s ease, color 0.3s ease;
-        }
-
         .feature-card li:hover {
-            padding-left: 40px;
             color: var(--ink);
         }
     </style>
