@@ -156,48 +156,39 @@
             margin-right: auto;
             position: relative;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: color 0.3s ease;
         }
 
         .hero h2:hover {
-            background: linear-gradient(
-                120deg,
-                #E8A87C 0%,
-                #d4a574 15%,
-                #c89968 30%,
-                #E8A87C 45%,
-                #f4b88a 60%,
-                #E8A87C 75%,
-                #d4a574 90%,
-                #E8A87C 100%
-            );
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shimmer 2s ease-in-out infinite, dither 0.15s steps(2) infinite;
-            filter: contrast(1.1) brightness(1.05);
+            color: #E8A87C;
+            animation: colorShift 3s ease-in-out infinite, subtleDither 0.2s linear infinite;
         }
 
-        @keyframes shimmer {
+        @keyframes colorShift {
             0%, 100% {
-                background-position: 0% center;
+                color: #E8A87C;
+                text-shadow: 0 0 20px rgba(232, 168, 124, 0.3);
+            }
+            25% {
+                color: #d4a574;
+                text-shadow: 0 0 20px rgba(212, 165, 116, 0.3);
             }
             50% {
-                background-position: 200% center;
+                color: #c89968;
+                text-shadow: 0 0 20px rgba(200, 153, 104, 0.3);
+            }
+            75% {
+                color: #f4b88a;
+                text-shadow: 0 0 20px rgba(244, 184, 138, 0.3);
             }
         }
 
-        @keyframes dither {
+        @keyframes subtleDither {
             0%, 100% {
-                text-shadow:
-                    0.5px 0.5px 0px rgba(232, 168, 124, 0.3),
-                    -0.5px -0.5px 0px rgba(212, 165, 116, 0.3);
+                filter: contrast(1.05) brightness(1.02);
             }
             50% {
-                text-shadow:
-                    -0.5px 0.5px 0px rgba(232, 168, 124, 0.3),
-                    0.5px -0.5px 0px rgba(200, 153, 104, 0.3);
+                filter: contrast(1.08) brightness(1.05);
             }
         }
 
