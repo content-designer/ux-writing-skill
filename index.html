@@ -660,6 +660,26 @@
 
         .terminal-control.close {
             background: #ff5f56;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .terminal-control.close::before {
+            content: '×';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10px;
+            color: #4a0a07;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .terminal-control.close:hover::before {
+            opacity: 1;
         }
 
         .terminal-control.minimize {
@@ -738,7 +758,7 @@
 <body>
     <header>
         <div class="container">
-            <h1>UX Writing</h1>
+            <h1>UX WRITING SKILL</h1>
             <nav>
                 <a href="https://github.com/content-designer/ux-writing-skill">Repository</a>
                 <a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/figma-integration.md">Figma</a>
@@ -765,15 +785,15 @@
                 <div class="stats-grid">
                     <div class="stat">
                         <div class="stat-number">25+</div>
-                        <div class="stat-label">Page guide</div>
+                        <div class="stat-label">Pages of guidance</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">4</div>
-                        <div class="stat-label">Quality standards</div>
+                        <div class="stat-number">40+</div>
+                        <div class="stat-label">UI patterns</div>
                     </div>
                     <div class="stat">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Accessible</div>
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Fillable templates</div>
                     </div>
                     <div class="stat">
                         <div class="stat-number">Free</div>
