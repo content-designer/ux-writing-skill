@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -90,6 +91,24 @@
         .hero {
             padding: 160px 0 200px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #murmuration-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h2 {
@@ -143,8 +162,10 @@
         .btn-primary:hover {
             background: var(--ink-light);
             border-color: var(--ink-light);
-            transform: translateY(-2px);
+            transform: translate3d(0, -2px, 0);
             box-shadow: 0 8px 24px rgba(26, 22, 20, 0.15);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
         }
 
         .btn-secondary {
@@ -155,7 +176,9 @@
         .btn-secondary:hover {
             background: var(--ink);
             color: var(--cream);
-            transform: translateY(-2px);
+            transform: translate3d(0, -2px, 0);
+            backface-visibility: hidden;
+            -webkit-font-smoothing: subpixel-antialiased;
         }
 
         /* Stats */
@@ -235,11 +258,11 @@
         .feature-card li {
             color: var(--ink-light);
             font-size: 16px;
-            padding: 12px 0;
-            padding-left: 32px;
+            padding: 12px 0 12px 32px;
             position: relative;
             line-height: 1.6;
             border-bottom: 1px solid var(--border);
+            transition: color 0.3s ease;
         }
 
         .feature-card li:last-child {
@@ -249,9 +272,11 @@
         .feature-card li:before {
             content: "—";
             position: absolute;
-            left: 0;
+            left: 8px;
             color: var(--accent);
             font-weight: 400;
+            width: 16px;
+            text-align: left;
         }
 
         /* Integrations */
@@ -526,12 +551,7 @@
             position: relative;
         }
 
-        .feature-card li {
-            transition: padding-left 0.3s ease, color 0.3s ease;
-        }
-
         .feature-card li:hover {
-            padding-left: 40px;
             color: var(--ink);
         }
     </style>
@@ -550,6 +570,7 @@
 
     <main>
         <section class="hero">
+            <div id="murmuration-canvas"></div>
             <div class="container">
                 <h2>Write better<br>interface copy</h2>
                 <p class="subtitle">A comprehensive skill for Claude Code that helps content designers and product teams create accessible, user-centered text following research-backed best practices.</p>
@@ -706,5 +727,188 @@
             </nav>
         </div>
     </footer>
+
+    <script>
+        // Linguistic murmuration - simplified for hero background
+        let birds = [];
+        let canvasInstance;
+
+        function setup() {
+            const container = document.getElementById('murmuration-canvas');
+            const w = container.offsetWidth;
+            const h = container.offsetHeight;
+
+            canvasInstance = createCanvas(w, h);
+            canvasInstance.parent('murmuration-canvas');
+
+            // Initialize birds with seed for consistent pattern
+            randomSeed(42);
+            noiseSeed(42);
+
+            for (let i = 0; i < 80; i++) {
+                birds.push(new Bird());
+            }
+
+            background(250, 249, 245, 0);
+        }
+
+        function draw() {
+            // Subtle trail fade
+            fill(250, 249, 245, 5);
+            noStroke();
+            rect(0, 0, width, height);
+
+            // Update and display birds
+            for (let bird of birds) {
+                bird.flock(birds);
+                bird.update();
+                bird.edges();
+                bird.show();
+            }
+        }
+
+        function windowResized() {
+            const container = document.getElementById('murmuration-canvas');
+            if (container) {
+                resizeCanvas(container.offsetWidth, container.offsetHeight);
+            }
+        }
+
+        class Bird {
+            constructor() {
+                this.position = createVector(random(width), random(height));
+                this.velocity = p5.Vector.random2D();
+                this.velocity.setMag(random(1.5, 3));
+                this.acceleration = createVector();
+                this.maxForce = 0.15;
+                this.maxSpeed = 2.5;
+                this.perceptionRadius = 60;
+            }
+
+            edges() {
+                if (this.position.x > width) this.position.x = 0;
+                else if (this.position.x < 0) this.position.x = width;
+                if (this.position.y > height) this.position.y = 0;
+                else if (this.position.y < 0) this.position.y = height;
+            }
+
+            flock(birds) {
+                let separation = this.separation(birds);
+                let alignment = this.alignment(birds);
+                let cohesion = this.cohesion(birds);
+
+                separation.mult(1.8);
+                alignment.mult(1.2);
+                cohesion.mult(1.0);
+
+                this.acceleration.add(separation);
+                this.acceleration.add(alignment);
+                this.acceleration.add(cohesion);
+            }
+
+            separation(birds) {
+                let steering = createVector();
+                let total = 0;
+                for (let other of birds) {
+                    let d = dist(
+                        this.position.x,
+                        this.position.y,
+                        other.position.x,
+                        other.position.y
+                    );
+                    if (other !== this && d < this.perceptionRadius) {
+                        let diff = p5.Vector.sub(this.position, other.position);
+                        diff.div(d * d);
+                        steering.add(diff);
+                        total++;
+                    }
+                }
+                if (total > 0) {
+                    steering.div(total);
+                    steering.setMag(this.maxSpeed);
+                    steering.sub(this.velocity);
+                    steering.limit(this.maxForce);
+                }
+                return steering;
+            }
+
+            alignment(birds) {
+                let steering = createVector();
+                let total = 0;
+                for (let other of birds) {
+                    let d = dist(
+                        this.position.x,
+                        this.position.y,
+                        other.position.x,
+                        other.position.y
+                    );
+                    if (other !== this && d < this.perceptionRadius) {
+                        steering.add(other.velocity);
+                        total++;
+                    }
+                }
+                if (total > 0) {
+                    steering.div(total);
+                    steering.setMag(this.maxSpeed);
+                    steering.sub(this.velocity);
+                    steering.limit(this.maxForce);
+                }
+                return steering;
+            }
+
+            cohesion(birds) {
+                let steering = createVector();
+                let total = 0;
+                for (let other of birds) {
+                    let d = dist(
+                        this.position.x,
+                        this.position.y,
+                        other.position.x,
+                        other.position.y
+                    );
+                    if (other !== this && d < this.perceptionRadius) {
+                        steering.add(other.position);
+                        total++;
+                    }
+                }
+                if (total > 0) {
+                    steering.div(total);
+                    steering.sub(this.position);
+                    steering.setMag(this.maxSpeed);
+                    steering.sub(this.velocity);
+                    steering.limit(this.maxForce);
+                }
+                return steering;
+            }
+
+            update() {
+                this.position.add(this.velocity);
+                this.velocity.add(this.acceleration);
+                this.velocity.limit(this.maxSpeed);
+                this.acceleration.mult(0);
+            }
+
+            show() {
+                let speed = this.velocity.mag();
+                let speedNorm = map(speed, 0, this.maxSpeed, 0, 1);
+
+                // Use site colors: accent, ink-light, ink-muted
+                let col;
+                if (speedNorm > 0.66) {
+                    col = color(212, 165, 116); // accent
+                } else if (speedNorm > 0.33) {
+                    col = color(74, 69, 64); // ink-light
+                } else {
+                    col = color(138, 133, 127); // ink-muted
+                }
+
+                col.setAlpha(160);
+
+                strokeWeight(2);
+                stroke(col);
+                point(this.position.x, this.position.y);
+            }
+        }
+    </script>
 </body>
 </html>
