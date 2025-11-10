@@ -59,9 +59,21 @@ This Agent Skill packages UX writing expertise into a system that Claude can app
 
 ### What You Need
 
-This skill works with **Claude Code** (the AI coding assistant). If you don't have Claude Code yet, visit [claude.ai/code](https://claude.ai/code) to get started.
+This skill works with **Claude Desktop** and **Claude Code**. Choose the installation method that matches your setup.
 
-### Step-by-Step Installation
+### Quick Install (Claude Desktop)
+
+If you're using Claude Desktop, installation is simple:
+
+1. Download this skill (click the green **"Code"** button → **"Download ZIP"**)
+2. Open Claude Desktop
+3. Go to **Settings** → **Capabilities** → **Upload skill**
+4. Select the downloaded skill file
+5. Start using the skill immediately!
+
+### Manual Install (Claude Code)
+
+If you're using Claude Code, follow these steps:
 
 **Step 1: Download This Skill**
 
