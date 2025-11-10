@@ -20,7 +20,7 @@
             --ink: #1a1614;
             --ink-light: #4a4540;
             --ink-muted: #8a857f;
-            --accent: #d4a574;
+            --accent: #E8A87C;
             --accent-dark: #b88a5f;
             --border: rgba(26, 22, 20, 0.08);
             --border-dark: rgba(26, 22, 20, 0.15);
@@ -115,7 +115,27 @@
 
         header nav a:hover {
             color: var(--ink);
-            background: rgba(26, 22, 20, 0.05);
+            background: rgba(232, 168, 124, 0.15);
+        }
+
+        .terminal-trigger {
+            color: var(--ink-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            letter-spacing: 0.2px;
+            padding: 8px 16px;
+            border-radius: 6px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+
+        .terminal-trigger:hover {
+            color: var(--ink);
+            background: rgba(232, 168, 124, 0.15);
         }
 
         /* Hero */
@@ -444,7 +464,7 @@
 
         footer p a:hover {
             color: var(--ink);
-            background: rgba(26, 22, 20, 0.05);
+            background: rgba(232, 168, 124, 0.15);
         }
 
         footer nav {
@@ -465,7 +485,7 @@
 
         footer nav a:hover {
             color: var(--ink);
-            background: rgba(26, 22, 20, 0.05);
+            background: rgba(232, 168, 124, 0.15);
         }
 
         /* Animations */
@@ -575,7 +595,7 @@
 
         /* Refined details */
         ::selection {
-            background: var(--accent);
+            background: #E8A87C;
             color: var(--cream);
         }
 
@@ -666,7 +686,7 @@
         }
 
         .terminal-prompt {
-            color: #d4a574;
+            color: #E8A87C;
         }
 
         .terminal-command {
@@ -682,35 +702,8 @@
         }
 
         .terminal-highlight {
-            color: #d4a574;
+            color: #E8A87C;
             font-weight: 600;
-        }
-
-        .terminal-toggle {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            background: var(--ink);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--cream);
-            font-size: 20px;
-            box-shadow: 0 8px 24px rgba(26, 22, 20, 0.2);
-            transition: all 0.2s ease;
-            z-index: 999;
-            font-family: 'Courier New', monospace;
-        }
-
-        .terminal-toggle:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(26, 22, 20, 0.25);
         }
 
         @media (max-width: 768px) {
@@ -719,12 +712,14 @@
                 max-height: 70vh;
             }
 
-            .terminal-toggle {
-                bottom: 20px;
-                right: 20px;
-                width: 44px;
-                height: 44px;
-                font-size: 18px;
+            header nav {
+                gap: 4px;
+            }
+
+            header nav a,
+            .terminal-trigger {
+                padding: 6px 12px;
+                font-size: 13px;
             }
         }
     </style>
@@ -737,6 +732,7 @@
                 <a href="https://github.com/content-designer/ux-writing-skill">Repository</a>
                 <a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/figma-integration.md">Figma</a>
                 <a href="https://github.com/content-designer/ux-writing-skill#usage-examples">Documentation</a>
+                <button class="terminal-trigger" onclick="toggleTerminal()">></button>
             </nav>
         </div>
     </header>
@@ -911,27 +907,33 @@
             </div>
         </div>
         <div class="terminal-content" id="terminal-content">
-            <div class="terminal-line"><span class="terminal-prompt">→</span> <span class="terminal-command">Review this error message for UX best practices</span></div>
-            <div class="terminal-line"><span class="terminal-output">Message: "Error: Invalid input. Please try again."</span></div>
+            <div class="terminal-line"><span class="terminal-prompt">→</span> <span class="terminal-command">Review this empty state message</span></div>
+            <div class="terminal-line"><span class="terminal-output">"You don't have any saved items."</span></div>
             <div class="terminal-line">&nbsp;</div>
-            <div class="terminal-line"><span class="terminal-success">✓ Analysis complete</span></div>
+            <div class="terminal-line"><span class="terminal-success">✓ Analyzing against 4 quality standards</span></div>
             <div class="terminal-line">&nbsp;</div>
-            <div class="terminal-line"><span class="terminal-highlight">Issues found:</span></div>
-            <div class="terminal-line"><span class="terminal-output">• Not purposeful - doesn't explain what's invalid</span></div>
-            <div class="terminal-line"><span class="terminal-output">• Not clear - "try again" lacks specificity</span></div>
-            <div class="terminal-line"><span class="terminal-output">• Missing recovery path</span></div>
+            <div class="terminal-line"><span class="terminal-highlight">Evaluation:</span></div>
+            <div class="terminal-line"><span class="terminal-output">✗ Purposeful: Doesn't help user take action or achieve goals</span></div>
+            <div class="terminal-line"><span class="terminal-output">✓ Concise: Word count is appropriate (6 words)</span></div>
+            <div class="terminal-line"><span class="terminal-output">✗ Conversational: Negative framing, sounds discouraging</span></div>
+            <div class="terminal-line"><span class="terminal-output">✓ Clear: Message is unambiguous</span></div>
+            <div class="terminal-line">&nbsp;</div>
+            <div class="terminal-line"><span class="terminal-highlight">Issues:</span></div>
+            <div class="terminal-line"><span class="terminal-output">• Missing call-to-action to populate the empty state</span></div>
+            <div class="terminal-line"><span class="terminal-output">• Negative framing ("don't have") instead of neutral/positive</span></div>
+            <div class="terminal-line"><span class="terminal-output">• No guidance on what to do next</span></div>
             <div class="terminal-line">&nbsp;</div>
             <div class="terminal-line"><span class="terminal-highlight">Recommended:</span></div>
-            <div class="terminal-line"><span class="terminal-output">"Email address must include @. Check your entry."</span></div>
+            <div class="terminal-line"><span class="terminal-output">"No saved items yet. Browse products to start building your list."</span></div>
             <div class="terminal-line">&nbsp;</div>
-            <div class="terminal-line"><span class="terminal-success">Improvement score: 2.5 → 9.0</span></div>
+            <div class="terminal-line"><span class="terminal-highlight">Why this works:</span></div>
+            <div class="terminal-line"><span class="terminal-output">• Purposeful: Clear CTA guides user to next action</span></div>
+            <div class="terminal-line"><span class="terminal-output">• Conversational: "yet" implies this is temporary and expected</span></div>
+            <div class="terminal-line"><span class="terminal-output">• Follows empty state pattern: Explanation + CTA</span></div>
             <div class="terminal-line">&nbsp;</div>
             <div class="terminal-line"><span class="terminal-prompt">→</span> <span class="terminal-command">_</span></div>
         </div>
     </div>
-
-    <!-- Toggle button -->
-    <button class="terminal-toggle" id="terminal-toggle" onclick="toggleTerminal()">></button>
 
     <script>
         // Draggable terminal window
@@ -945,7 +947,6 @@
 
         const terminalWindow = document.getElementById('terminal-window');
         const terminalHeader = document.getElementById('terminal-header');
-        const terminalToggle = document.getElementById('terminal-toggle');
 
         terminalHeader.addEventListener('mousedown', dragStart);
         document.addEventListener('mousemove', drag);
