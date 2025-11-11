@@ -65,7 +65,7 @@ This skill works with **Claude Desktop** and **Claude Code**. Choose the install
 
 If you're using Claude Desktop, installation is simple:
 
-1. **Download** [ux-writing-skill.zip](https://github.com/content-designer/ux-writing-skill/raw/claude/fix-video-modal-behavior-011CV2BozzuQbWSS3jRrn6kU/dist/ux-writing-skill.zip) — this contains just the skill files and documentation
+1. **Download** [ux-writing-skill.zip](https://github.com/content-designer/ux-writing-skill/raw/main/dist/ux-writing-skill.zip) — this contains just the skill files and documentation
 2. Open **Claude Desktop**
 3. Go to **Settings → Capabilities → Skills**
 4. Click **Upload skill** and select **ux-writing-skill.zip**
@@ -80,7 +80,7 @@ If you're using Claude Code, follow these steps:
 
 **Step 1: Download the Skill**
 
-1. Download [ux-writing-skill.zip](https://github.com/content-designer/ux-writing-skill/raw/claude/fix-video-modal-behavior-011CV2BozzuQbWSS3jRrn6kU/dist/ux-writing-skill.zip)
+1. Download [ux-writing-skill.zip](https://github.com/content-designer/ux-writing-skill/raw/main/dist/ux-writing-skill.zip)
 2. Extract the ZIP file (double-click on Mac, right-click → Extract on Windows)
 
 **Step 2: Copy to Skills Folder**

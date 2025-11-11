@@ -1,0 +1,45 @@
+name: Auto-rebuild Skill Package
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'SKILL.md'
+      - 'docs/**'
+      - 'examples/**'
+      - 'references/**'
+      - 'templates/**'
+      - 'build-skill.sh'
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+
+    # Skip if commit was made by the bot to prevent infinite loops
+    if: "!contains(github.event.head_commit.message, '[auto-rebuild]')"
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build skill package
+      run: ./build-skill.sh
+
+    - name: Check for changes
+      id: check_changes
+      run: |
+        if git diff --quiet dist/ux-writing-skill.zip; then
+          echo "changed=false" >> $GITHUB_OUTPUT
+        else
+          echo "changed=true" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Commit updated ZIP
+      if: steps.check_changes.outputs.changed == 'true'
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add dist/ux-writing-skill.zip
+        git commit -m "Auto-rebuild skill package [auto-rebuild]"
+        git push
