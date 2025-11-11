@@ -1227,6 +1227,11 @@
         }
 
         function closeVideo() {
+            const video = videoWindow.querySelector('video');
+            if (video) {
+                video.pause();
+                video.currentTime = 0;
+            }
             videoWindow.style.display = 'none';
         }
     </script>
