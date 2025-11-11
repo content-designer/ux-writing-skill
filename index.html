@@ -641,8 +641,6 @@
             z-index: 1000;
             display: flex;
             flex-direction: column;
-            min-width: 400px;
-            min-height: 300px;
         }
 
         .terminal-header {
@@ -773,8 +771,6 @@
             z-index: 1000;
             display: flex;
             flex-direction: column;
-            min-width: 400px;
-            min-height: 300px;
         }
 
         .video-header {
@@ -813,76 +809,6 @@
             height: 100%;
             object-fit: contain;
             border: none;
-        }
-
-        /* Resize Handles */
-        .resize-handle {
-            position: absolute;
-            z-index: 10;
-        }
-
-        .resize-handle.resize-top {
-            top: 0;
-            left: 8px;
-            right: 8px;
-            height: 8px;
-            cursor: ns-resize;
-        }
-
-        .resize-handle.resize-bottom {
-            bottom: 0;
-            left: 8px;
-            right: 8px;
-            height: 8px;
-            cursor: ns-resize;
-        }
-
-        .resize-handle.resize-left {
-            left: 0;
-            top: 8px;
-            bottom: 8px;
-            width: 8px;
-            cursor: ew-resize;
-        }
-
-        .resize-handle.resize-right {
-            right: 0;
-            top: 8px;
-            bottom: 8px;
-            width: 8px;
-            cursor: ew-resize;
-        }
-
-        .resize-handle.resize-top-left {
-            top: 0;
-            left: 0;
-            width: 16px;
-            height: 16px;
-            cursor: nwse-resize;
-        }
-
-        .resize-handle.resize-top-right {
-            top: 0;
-            right: 0;
-            width: 16px;
-            height: 16px;
-            cursor: nesw-resize;
-        }
-
-        .resize-handle.resize-bottom-left {
-            bottom: 0;
-            left: 0;
-            width: 16px;
-            height: 16px;
-            cursor: nesw-resize;
-        }
-
-        .resize-handle.resize-bottom-right {
-            bottom: 0;
-            right: 0;
-            width: 16px;
-            height: 16px;
-            cursor: nwse-resize;
         }
 
         @media (max-width: 768px) {
@@ -1122,15 +1048,6 @@
             <div class="terminal-line">&nbsp;</div>
             <div class="terminal-line"><span class="terminal-prompt">→</span> <span class="terminal-command">_</span></div>
         </div>
-        <!-- Resize handles -->
-        <div class="resize-handle resize-top"></div>
-        <div class="resize-handle resize-bottom"></div>
-        <div class="resize-handle resize-left"></div>
-        <div class="resize-handle resize-right"></div>
-        <div class="resize-handle resize-top-left"></div>
-        <div class="resize-handle resize-top-right"></div>
-        <div class="resize-handle resize-bottom-left"></div>
-        <div class="resize-handle resize-bottom-right"></div>
     </div>
 
     <!-- Video Window -->
@@ -1147,15 +1064,6 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-        <!-- Resize handles -->
-        <div class="resize-handle resize-top"></div>
-        <div class="resize-handle resize-bottom"></div>
-        <div class="resize-handle resize-left"></div>
-        <div class="resize-handle resize-right"></div>
-        <div class="resize-handle resize-top-left"></div>
-        <div class="resize-handle resize-top-right"></div>
-        <div class="resize-handle resize-bottom-left"></div>
-        <div class="resize-handle resize-bottom-right"></div>
     </div>
 
     <script>
@@ -1181,9 +1089,8 @@
         document.addEventListener('touchend', dragEnd);
 
         function dragStart(e) {
-            // Don't start dragging if clicking on resize handle or terminal control
-            if (e.target.classList.contains('resize-handle') ||
-                e.target.classList.contains('terminal-control')) {
+            // Don't start dragging if clicking on terminal control
+            if (e.target.classList.contains('terminal-control')) {
                 return;
             }
 
@@ -1268,9 +1175,8 @@
         document.addEventListener('touchend', videoDragEnd);
 
         function videoDragStart(e) {
-            // Don't start dragging if clicking on resize handle or terminal control
-            if (e.target.classList.contains('resize-handle') ||
-                e.target.classList.contains('terminal-control')) {
+            // Don't start dragging if clicking on terminal control
+            if (e.target.classList.contains('terminal-control')) {
                 return;
             }
 
@@ -1323,133 +1229,6 @@
 
         function closeVideo() {
             videoWindow.style.display = 'none';
-        }
-
-        // Resizable windows
-        let isResizing = false;
-        let resizeHandle = null;
-        let resizeTarget = null;
-        let resizeStartX, resizeStartY;
-        let resizeStartWidth, resizeStartHeight;
-        let resizeStartLeft, resizeStartTop;
-
-        // Add resize event listeners to all resize handles
-        document.querySelectorAll('.resize-handle').forEach(handle => {
-            handle.addEventListener('mousedown', startResize);
-        });
-
-        document.addEventListener('mousemove', resize);
-        document.addEventListener('mouseup', stopResize);
-
-        function startResize(e) {
-            if (e.target.classList.contains('resize-handle')) {
-                isResizing = true;
-                resizeHandle = e.target;
-                resizeTarget = resizeHandle.closest('.terminal-window, .video-window');
-
-                resizeStartX = e.clientX;
-                resizeStartY = e.clientY;
-
-                const rect = resizeTarget.getBoundingClientRect();
-                resizeStartWidth = rect.width;
-                resizeStartHeight = rect.height;
-                resizeStartLeft = rect.left;
-                resizeStartTop = rect.top;
-
-                e.preventDefault();
-                e.stopPropagation();
-            }
-        }
-
-        function resize(e) {
-            if (!isResizing) return;
-
-            e.preventDefault();
-
-            const deltaX = e.clientX - resizeStartX;
-            const deltaY = e.clientY - resizeStartY;
-
-            let newWidth = resizeStartWidth;
-            let newHeight = resizeStartHeight;
-
-            // Get the initial offset values
-            let initialTranslateX, initialTranslateY;
-            if (resizeTarget === terminalWindow) {
-                initialTranslateX = xOffset;
-                initialTranslateY = yOffset;
-            } else if (resizeTarget === videoWindow) {
-                initialTranslateX = videoXOffset;
-                initialTranslateY = videoYOffset;
-            }
-
-            let translateAdjustX = 0;
-            let translateAdjustY = 0;
-
-            // Handle different resize directions
-            if (resizeHandle.classList.contains('resize-right') ||
-                resizeHandle.classList.contains('resize-top-right') ||
-                resizeHandle.classList.contains('resize-bottom-right')) {
-                newWidth = Math.max(400, resizeStartWidth + deltaX);
-            }
-
-            if (resizeHandle.classList.contains('resize-left') ||
-                resizeHandle.classList.contains('resize-top-left') ||
-                resizeHandle.classList.contains('resize-bottom-left')) {
-                const proposedWidth = resizeStartWidth - deltaX;
-                if (proposedWidth >= 400) {
-                    newWidth = proposedWidth;
-                    translateAdjustX = deltaX;
-                } else {
-                    newWidth = 400;
-                    translateAdjustX = resizeStartWidth - 400;
-                }
-            }
-
-            if (resizeHandle.classList.contains('resize-bottom') ||
-                resizeHandle.classList.contains('resize-bottom-left') ||
-                resizeHandle.classList.contains('resize-bottom-right')) {
-                newHeight = Math.max(300, resizeStartHeight + deltaY);
-            }
-
-            if (resizeHandle.classList.contains('resize-top') ||
-                resizeHandle.classList.contains('resize-top-left') ||
-                resizeHandle.classList.contains('resize-top-right')) {
-                const proposedHeight = resizeStartHeight - deltaY;
-                if (proposedHeight >= 300) {
-                    newHeight = proposedHeight;
-                    translateAdjustY = deltaY;
-                } else {
-                    newHeight = 300;
-                    translateAdjustY = resizeStartHeight - 300;
-                }
-            }
-
-            // Apply new dimensions
-            resizeTarget.style.width = newWidth + 'px';
-            resizeTarget.style.height = newHeight + 'px';
-
-            // Calculate new transform based on initial offset plus adjustment
-            const newTranslateX = initialTranslateX + translateAdjustX;
-            const newTranslateY = initialTranslateY + translateAdjustY;
-
-            resizeTarget.style.transform = `translate(${newTranslateX}px, ${newTranslateY}px)`;
-
-            // Update offsets for dragging
-            if (resizeTarget === terminalWindow) {
-                xOffset = newTranslateX;
-                yOffset = newTranslateY;
-            } else if (resizeTarget === videoWindow) {
-                videoXOffset = newTranslateX;
-                videoYOffset = newTranslateY;
-            }
-        }
-
-        function stopResize() {
-            if (isResizing) {
-                isResizing = false;
-                resizeHandle = null;
-                resizeTarget = null;
-            }
         }
     </script>
 </body>
