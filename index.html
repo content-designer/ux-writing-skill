@@ -632,7 +632,7 @@
         .terminal-window {
             position: fixed;
             width: 600px;
-            max-height: 500px;
+            height: 500px;
             background: #1a1614;
             border: 1px solid var(--border-dark);
             border-radius: 8px;
@@ -641,13 +641,15 @@
             z-index: 1000;
             display: flex;
             flex-direction: column;
+            min-width: 400px;
+            min-height: 300px;
         }
 
         .terminal-header {
             padding: 12px 16px;
             background: #141413;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: move;
+            cursor: grab;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -762,7 +764,7 @@
         .video-window {
             position: fixed;
             width: 800px;
-            max-width: 90vw;
+            height: 500px;
             background: #1a1614;
             border: 1px solid var(--border-dark);
             border-radius: 8px;
@@ -771,13 +773,15 @@
             z-index: 1000;
             display: flex;
             flex-direction: column;
+            min-width: 400px;
+            min-height: 300px;
         }
 
         .video-header {
             padding: 12px 16px;
             background: #141413;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            cursor: move;
+            cursor: grab;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -799,17 +803,86 @@
         .video-content {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 aspect ratio */
+            flex: 1;
             background: #1a1614;
+            overflow: hidden;
         }
 
         .video-content video {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
+            object-fit: contain;
             border: none;
+        }
+
+        /* Resize Handles */
+        .resize-handle {
+            position: absolute;
+            z-index: 10;
+        }
+
+        .resize-handle.resize-top {
+            top: 0;
+            left: 8px;
+            right: 8px;
+            height: 8px;
+            cursor: ns-resize;
+        }
+
+        .resize-handle.resize-bottom {
+            bottom: 0;
+            left: 8px;
+            right: 8px;
+            height: 8px;
+            cursor: ns-resize;
+        }
+
+        .resize-handle.resize-left {
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 8px;
+            cursor: ew-resize;
+        }
+
+        .resize-handle.resize-right {
+            right: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 8px;
+            cursor: ew-resize;
+        }
+
+        .resize-handle.resize-top-left {
+            top: 0;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            cursor: nwse-resize;
+        }
+
+        .resize-handle.resize-top-right {
+            top: 0;
+            right: 0;
+            width: 16px;
+            height: 16px;
+            cursor: nesw-resize;
+        }
+
+        .resize-handle.resize-bottom-left {
+            bottom: 0;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            cursor: nesw-resize;
+        }
+
+        .resize-handle.resize-bottom-right {
+            bottom: 0;
+            right: 0;
+            width: 16px;
+            height: 16px;
+            cursor: nwse-resize;
         }
 
         @media (max-width: 768px) {
@@ -1045,6 +1118,15 @@
             <div class="terminal-line">&nbsp;</div>
             <div class="terminal-line"><span class="terminal-prompt">→</span> <span class="terminal-command">_</span></div>
         </div>
+        <!-- Resize handles -->
+        <div class="resize-handle resize-top"></div>
+        <div class="resize-handle resize-bottom"></div>
+        <div class="resize-handle resize-left"></div>
+        <div class="resize-handle resize-right"></div>
+        <div class="resize-handle resize-top-left"></div>
+        <div class="resize-handle resize-top-right"></div>
+        <div class="resize-handle resize-bottom-left"></div>
+        <div class="resize-handle resize-bottom-right"></div>
     </div>
 
     <!-- Video Window -->
@@ -1056,11 +1138,20 @@
             </div>
         </div>
         <div class="video-content">
-            <video controls style="width: 100%; height: 100%;">
+            <video controls>
                 <source src="https://raw.githubusercontent.com/content-designer/ux-writing-skill/main/ux-writing-skill-vid.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
+        <!-- Resize handles -->
+        <div class="resize-handle resize-top"></div>
+        <div class="resize-handle resize-bottom"></div>
+        <div class="resize-handle resize-left"></div>
+        <div class="resize-handle resize-right"></div>
+        <div class="resize-handle resize-top-left"></div>
+        <div class="resize-handle resize-top-right"></div>
+        <div class="resize-handle resize-bottom-left"></div>
+        <div class="resize-handle resize-bottom-right"></div>
     </div>
 
     <script>
@@ -1086,6 +1177,12 @@
         document.addEventListener('touchend', dragEnd);
 
         function dragStart(e) {
+            // Don't start dragging if clicking on resize handle or terminal control
+            if (e.target.classList.contains('resize-handle') ||
+                e.target.classList.contains('terminal-control')) {
+                return;
+            }
+
             if (e.type === 'touchstart') {
                 initialX = e.touches[0].clientX - xOffset;
                 initialY = e.touches[0].clientY - yOffset;
@@ -1095,9 +1192,7 @@
             }
 
             if (e.target === terminalHeader || terminalHeader.contains(e.target)) {
-                if (!e.target.classList.contains('terminal-control')) {
-                    isDragging = true;
-                }
+                isDragging = true;
             }
         }
 
@@ -1169,6 +1264,12 @@
         document.addEventListener('touchend', videoDragEnd);
 
         function videoDragStart(e) {
+            // Don't start dragging if clicking on resize handle or terminal control
+            if (e.target.classList.contains('resize-handle') ||
+                e.target.classList.contains('terminal-control')) {
+                return;
+            }
+
             if (e.type === 'touchstart') {
                 videoInitialX = e.touches[0].clientX - videoXOffset;
                 videoInitialY = e.touches[0].clientY - videoYOffset;
@@ -1178,9 +1279,7 @@
             }
 
             if (e.target === videoHeader || videoHeader.contains(e.target)) {
-                if (!e.target.classList.contains('terminal-control')) {
-                    isVideoDragging = true;
-                }
+                isVideoDragging = true;
             }
         }
 
@@ -1220,6 +1319,137 @@
 
         function closeVideo() {
             videoWindow.style.display = 'none';
+        }
+
+        // Resizable windows
+        let isResizing = false;
+        let resizeHandle = null;
+        let resizeTarget = null;
+        let resizeStartX, resizeStartY;
+        let resizeStartWidth, resizeStartHeight;
+        let resizeStartLeft, resizeStartTop;
+
+        // Add resize event listeners to all resize handles
+        document.querySelectorAll('.resize-handle').forEach(handle => {
+            handle.addEventListener('mousedown', startResize);
+        });
+
+        document.addEventListener('mousemove', resize);
+        document.addEventListener('mouseup', stopResize);
+
+        function startResize(e) {
+            if (e.target.classList.contains('resize-handle')) {
+                isResizing = true;
+                resizeHandle = e.target;
+                resizeTarget = resizeHandle.closest('.terminal-window, .video-window');
+
+                resizeStartX = e.clientX;
+                resizeStartY = e.clientY;
+
+                const rect = resizeTarget.getBoundingClientRect();
+                resizeStartWidth = rect.width;
+                resizeStartHeight = rect.height;
+                resizeStartLeft = rect.left;
+                resizeStartTop = rect.top;
+
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        }
+
+        function resize(e) {
+            if (!isResizing) return;
+
+            e.preventDefault();
+
+            const deltaX = e.clientX - resizeStartX;
+            const deltaY = e.clientY - resizeStartY;
+
+            let newWidth = resizeStartWidth;
+            let newHeight = resizeStartHeight;
+            let newLeft = resizeStartLeft;
+            let newTop = resizeStartTop;
+
+            // Handle different resize directions
+            if (resizeHandle.classList.contains('resize-right') ||
+                resizeHandle.classList.contains('resize-top-right') ||
+                resizeHandle.classList.contains('resize-bottom-right')) {
+                newWidth = Math.max(400, resizeStartWidth + deltaX);
+            }
+
+            if (resizeHandle.classList.contains('resize-left') ||
+                resizeHandle.classList.contains('resize-top-left') ||
+                resizeHandle.classList.contains('resize-bottom-left')) {
+                newWidth = Math.max(400, resizeStartWidth - deltaX);
+                if (newWidth > 400) {
+                    newLeft = resizeStartLeft + deltaX;
+                }
+            }
+
+            if (resizeHandle.classList.contains('resize-bottom') ||
+                resizeHandle.classList.contains('resize-bottom-left') ||
+                resizeHandle.classList.contains('resize-bottom-right')) {
+                newHeight = Math.max(300, resizeStartHeight + deltaY);
+            }
+
+            if (resizeHandle.classList.contains('resize-top') ||
+                resizeHandle.classList.contains('resize-top-left') ||
+                resizeHandle.classList.contains('resize-top-right')) {
+                newHeight = Math.max(300, resizeStartHeight - deltaY);
+                if (newHeight > 300) {
+                    newTop = resizeStartTop + deltaY;
+                }
+            }
+
+            // Apply new dimensions
+            resizeTarget.style.width = newWidth + 'px';
+            resizeTarget.style.height = newHeight + 'px';
+
+            // Update position if resizing from top or left
+            const currentTransform = resizeTarget.style.transform;
+            const transformMatch = currentTransform.match(/translate\(([^,]+),\s*([^)]+)\)/);
+            let currentTranslateX = 0;
+            let currentTranslateY = 0;
+
+            if (transformMatch) {
+                currentTranslateX = parseFloat(transformMatch[1]);
+                currentTranslateY = parseFloat(transformMatch[2]);
+            }
+
+            if (resizeHandle.classList.contains('resize-left') ||
+                resizeHandle.classList.contains('resize-top-left') ||
+                resizeHandle.classList.contains('resize-bottom-left')) {
+                if (newWidth > 400) {
+                    currentTranslateX += deltaX;
+                }
+            }
+
+            if (resizeHandle.classList.contains('resize-top') ||
+                resizeHandle.classList.contains('resize-top-left') ||
+                resizeHandle.classList.contains('resize-top-right')) {
+                if (newHeight > 300) {
+                    currentTranslateY += deltaY;
+                }
+            }
+
+            resizeTarget.style.transform = `translate(${currentTranslateX}px, ${currentTranslateY}px)`;
+
+            // Update offsets for dragging
+            if (resizeTarget === terminalWindow) {
+                xOffset = currentTranslateX;
+                yOffset = currentTranslateY;
+            } else if (resizeTarget === videoWindow) {
+                videoXOffset = currentTranslateX;
+                videoYOffset = currentTranslateY;
+            }
+        }
+
+        function stopResize() {
+            if (isResizing) {
+                isResizing = false;
+                resizeHandle = null;
+                resizeTarget = null;
+            }
         }
     </script>
 </body>
