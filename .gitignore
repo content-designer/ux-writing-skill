@@ -1,5 +1,5 @@
-# Build output
-dist/
+# Build output (commit the skill ZIP for direct downloads until first release)
+# dist/
 
 # OS files
 .DS_Store
