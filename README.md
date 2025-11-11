@@ -65,84 +65,45 @@ This skill works with **Claude Desktop** and **Claude Code**. Choose the install
 
 If you're using Claude Desktop, installation is simple:
 
-1. Download this skill (click the green **"Code"** button → **"Download ZIP"**)
-2. Open Claude Desktop
-3. Go to **Settings** → **Capabilities** → **Upload skill**
-4. Select the downloaded skill file
-5. Start using the skill immediately!
+1. **Download** [ux-writing-skill.zip](https://github.com/content-designer/ux-writing-skill/releases/latest/download/ux-writing-skill.zip) — this contains just the skill files and documentation
+2. Open **Claude Desktop**
+3. Go to **Settings → Capabilities → Skills**
+4. Click **Upload skill** and select **ux-writing-skill.zip**
+5. **Upload the ZIP file directly** — do not extract it first
+6. Start using the skill immediately!
+
+The ZIP contains only skill-relevant files: `SKILL.md` plus supporting documentation in `docs/`, `examples/`, `references/`, and `templates/`.
 
 ### Manual Install (Claude Code)
 
 If you're using Claude Code, follow these steps:
 
-**Step 1: Download This Skill**
+**Step 1: Download the Skill**
 
-1. On this GitHub page, look for the green **"Code"** button near the top
-2. Click it and select **"Download ZIP"**
-3. Find the downloaded file (usually in your Downloads folder)
-4. Double-click the ZIP file to extract it
+1. Download [ux-writing-skill.zip](https://github.com/content-designer/ux-writing-skill/releases/latest/download/ux-writing-skill.zip)
+2. Extract the ZIP file (double-click on Mac, right-click → Extract on Windows)
 
-**Step 2: Find Your Skills Folder**
+**Step 2: Copy to Skills Folder**
 
-The skills folder is where Claude Code looks for custom skills. Here's how to find or create it:
+Copy the extracted folder to your Claude skills directory:
 
-**On Mac:**
-1. Open Finder
-2. Press `Command + Shift + G` (this opens "Go to Folder")
-3. Type: `~/.claude/skills`
-4. Press Enter
-5. If you see "folder doesn't exist", create it:
-   - Type `~/.claude` instead and press Enter
-   - Right-click in the window and select "New Folder"
-   - Name it `skills`
+- **Mac/Linux**: `~/.claude/skills/`
+- **Windows**: `%USERPROFILE%\.claude\skills\`
 
-**On Windows:**
-1. Open File Explorer
-2. In the address bar, type: `%USERPROFILE%\.claude\skills`
-3. Press Enter
-4. If you see "folder doesn't exist", create it:
-   - Type `%USERPROFILE%\.claude` instead and press Enter
-   - Right-click and select "New" → "Folder"
-   - Name it `skills`
+Create the directory if it doesn't exist.
 
-**Step 3: Install the Skill**
+**Step 3: Restart Claude Code**
 
-1. Open the extracted folder from Step 1
-2. Inside, you'll see a folder called `ux-writing`
-3. **Copy the entire `ux-writing` folder** (not just the files inside it)
-4. Paste it into your skills folder from Step 2
+Quit and reopen Claude Code to activate the skill.
 
-Your skills folder should now look like this:
-```
-.claude/
-  skills/
-    ux-writing/
-      SKILL.md
-      references/
-      examples/
-      templates/
-      (and other files)
-```
+**Verify It's Working**
 
-**Step 4: Restart Claude Code**
-
-1. Completely quit Claude Code (don't just close the window)
-2. Reopen Claude Code
-3. The skill is now installed!
-
-**Step 5: Verify It's Working**
-
-Try asking Claude Code:
+Try asking Claude:
 ```
 Write an error message for when a payment fails
 ```
 
-If the skill is working, Claude will apply UX writing best practices and create a clear, empathetic error message. You can also ask:
-```
-What UX writing skills do you have?
-```
-
-Claude should mention the UX Writing Skill in its response.
+Claude will apply UX writing best practices and create a clear, empathetic error message.
 
 ### For Teams: Project Installation
 
@@ -266,11 +227,23 @@ Built by [Christopher Greer](https://www.linkedin.com/in/christopher-greer/), St
 Contributions welcome! If you have:
 
 - Additional reference patterns
-- More real-world examples  
+- More real-world examples
 - Template improvements
 - Translations to other languages
 
 Please open an issue or submit a pull request.
+
+### Building the Skill Package
+
+If you're contributing or want to build the skill ZIP locally:
+
+```bash
+./build-skill.sh
+```
+
+This creates `dist/ux-writing-skill.zip` containing only the skill files (`SKILL.md`, `docs/`, `examples/`, `references/`, `templates/`).
+
+The build script excludes repository files like `README.md`, `CONTRIBUTING.md`, `index.html`, and the demo video — these live on GitHub but aren't needed in the skill package.
 
 ## License
 
