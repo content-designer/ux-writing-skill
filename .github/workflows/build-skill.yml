@@ -1,0 +1,30 @@
+name: Build Skill Package
+
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build skill package
+      run: ./build-skill.sh
+
+    - name: Upload skill package as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ux-writing-skill
+        path: dist/ux-writing-skill.zip
+
+    - name: Upload to release
+      if: github.event_name == 'release'
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/ux-writing-skill.zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
