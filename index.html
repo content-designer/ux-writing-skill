@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A comprehensive UX Writing Skill for Claude Code. Write accessible, user-centered interface copy with research-backed best practices.">
-    <title>UX Writing Skill for Claude Code</title>
+    <meta name="description" content="A comprehensive UX Writing Skill for Claude and OpenAI Codex. Write accessible, user-centered interface copy with research-backed best practices.">
+    <title>UX Writing Skill for Claude & Codex</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
@@ -854,7 +854,7 @@
         <section class="hero">
             <div class="container">
                 <h2>Write better<br>interface copy</h2>
-                <p class="subtitle">A comprehensive skill for Claude Code that helps content designers and product teams create accessible, user-centered text following research-backed best practices.</p>
+                <p class="subtitle">A comprehensive agent skill for Claude and OpenAI Codex that helps content designers and product teams create accessible, user-centered text following research-backed best practices.</p>
                 <div class="cta-buttons">
                     <a href="https://github.com/content-designer/ux-writing-skill/raw/main/dist/ux-writing-skill.zip" class="btn btn-primary">Download skill</a>
                     <a href="https://github.com/content-designer/ux-writing-skill" class="btn btn-secondary">View on GitHub</a>
@@ -961,12 +961,22 @@
         <section class="integrations">
             <div class="container">
                 <h3 class="section-title">Figma integration</h3>
-                <p class="intro">Review and improve UX copy directly from your Figma designs. Perfect for content designers and product teams.</p>
-                <div class="integration-card">
-                    <h4>Quick setup</h4>
-                    <code>claude mcp add --transport http figma https://mcp.figma.com/mcp</code>
-                    <p class="help-text">Then share any Figma frame link with Claude to get instant UX writing feedback, accessibility audits, and specific improvements.</p>
-                    <p class="guide-link"><a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/claude-figma-integration.md">Read full setup guide →</a></p>
+                <p class="intro">Review and improve UX copy directly from your Figma designs. Works with both Claude Code and ChatGPT. Perfect for content designers and product teams.</p>
+
+                <div class="feature-grid" style="margin-bottom: 0;">
+                    <div class="integration-card" style="background: rgba(186, 205, 217, 0.08); border: 1px solid var(--border); padding: 48px;">
+                        <h4>Claude Code + Figma MCP</h4>
+                        <code>claude mcp add --transport http figma https://mcp.figma.com/mcp</code>
+                        <p class="help-text">Share any Figma frame link with Claude Code to get instant UX writing feedback, accessibility audits, and specific improvements.</p>
+                        <p class="guide-link"><a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/claude-figma-integration.md">Read Claude setup guide →</a></p>
+                    </div>
+
+                    <div class="integration-card" style="background: rgba(186, 205, 217, 0.08); border: 1px solid var(--border); padding: 48px;">
+                        <h4>ChatGPT Figma App</h4>
+                        <p class="help-text" style="margin-top: 0; margin-bottom: 24px;">Connect the Figma app in ChatGPT to review designs and generate new ones with optimized UX copy using this skill.</p>
+                        <p style="color: var(--ink-light); font-size: 15px; line-height: 1.6; margin-bottom: 24px;">ChatGPT → Profile → Apps & connectors → Figma → Connect</p>
+                        <p class="guide-link"><a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/codex-figma-integration.md">Read Codex setup guide →</a></p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -974,24 +984,30 @@
         <section class="quickstart">
             <div class="container">
                 <h3 class="section-title">Get started</h3>
-                
+
                 <div class="steps">
                     <div class="step">
                         <div class="step-number">Step 1</div>
                         <h4>Download</h4>
-                        <p>Download <strong>ux-writing-skill.zip</strong> — contains the skill file and all supporting documentation.</p>
-                </div>
-
-                <div class="step">
-                    <div class="step-number">Step 2</div>
-                    <h4>Upload</h4>
-                    <p>In Claude Desktop, open <strong>Settings → Capabilities → Skills</strong>, click <strong>Upload skill</strong>, and select <strong>ux-writing-skill.zip</strong>. Upload the ZIP file directly without extracting it.</p>
+                        <p>Download <strong>ux-writing-skill.zip</strong> — contains the skill file and all supporting documentation for both Claude and Codex.</p>
                     </div>
 
-                <div class="step">
+                    <div class="step">
+                        <div class="step-number">Step 2 — Claude</div>
+                        <h4>Install in Claude Desktop</h4>
+                        <p>Open <strong>Settings → Capabilities → Skills</strong>, click <strong>Upload skill</strong>, and select the ZIP file directly (no extraction needed).</p>
+                    </div>
+
+                    <div class="step">
+                        <div class="step-number">Step 2 — Codex</div>
+                        <h4>Install in Codex</h4>
+                        <p>Extract the ZIP and copy to <strong>~/.codex/skills/</strong> (Mac/Linux) or <strong>%USERPROFILE%\.codex\skills\</strong> (Windows), then restart Codex.</p>
+                    </div>
+
+                    <div class="step">
                         <div class="step-number">Step 3</div>
                         <h4>Use</h4>
-                        <p>Ask Claude to review any interface copy and it will automatically apply UX writing best practices.</p>
+                        <p>Ask your AI assistant to review any interface copy and it will automatically apply UX writing best practices.</p>
                     </div>
                 </div>
                 <div class="quickstart-cta">
@@ -1015,7 +1031,7 @@
     <!-- Terminal Window -->
     <div class="terminal-window" id="terminal-window" style="top: 100px; left: 100px; display: none;">
         <div class="terminal-header" id="terminal-header">
-            <div class="terminal-title">claude-code — ux-writing</div>
+            <div class="terminal-title">ux-writing-skill — demo</div>
             <div class="terminal-controls">
                 <button class="terminal-control close" onclick="closeTerminal()"></button>
             </div>
