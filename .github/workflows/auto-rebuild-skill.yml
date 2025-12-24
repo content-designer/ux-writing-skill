@@ -15,6 +15,10 @@ jobs:
   rebuild:
     runs-on: ubuntu-latest
 
+    # Grant write permissions to contents so the workflow can push commits
+    permissions:
+      contents: write
+
     # Skip if commit was made by the bot to prevent infinite loops
     if: "!contains(github.event.head_commit.message, '[auto-rebuild]')"
 
