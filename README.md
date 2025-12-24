@@ -191,7 +191,7 @@ Connect this skill to Figma through Claude Code or ChatGPT to analyze mockups, a
 
 3. **Get instant feedback** with specific improvements based on the four quality standards.
 
-**📖 Full Claude Code setup guide:** [docs/figma-integration.md](docs/figma-integration.md)
+**📖 Full Claude Code setup guide:** [docs/claude-figma-integration.md](docs/claude-figma-integration.md)
 
 ### Quick Start with ChatGPT Figma App
 
