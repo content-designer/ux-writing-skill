@@ -327,7 +327,7 @@ MIT License — use this skill freely in your projects and teams.
 Looking for more Agent Skills?
 
 **For Claude:**
-- Browse the [Claude Code Skills collection](https://github.com/anthropics/claude-code-skills)
+- Browse the [Claude Code Skills collection](https://github.com/anthropics/skills)
 - Learn about [Agent Skills architecture](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
 - Read [best practices for authoring skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices)
 
@@ -344,4 +344,4 @@ This skill makes UX writing excellence systematic, scalable, and consistent — 
 
 ---
 
-**Status**: Production-ready • **Version**: 1.1.0 • **Last updated**: November 2025
+**Status**: Production-ready • **Version**: 1.1.0 • **Last updated**: January 2026
