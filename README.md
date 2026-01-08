@@ -344,4 +344,4 @@ This skill makes UX writing excellence systematic, scalable, and consistent — 
 
 ---
 
-**Status**: Production-ready • **Version**: 1.2.0 • **Last updated**: January 2026
+**Status**: Production-ready • **Version**: 1.5.0 • **Last updated**: January 2026

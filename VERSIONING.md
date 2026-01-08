@@ -12,15 +12,31 @@ This project follows [Semantic Versioning](https://semver.org/) (SemVer).
 
 ## Version History
 
-### v1.2.0 (January 2026)
-**OpenAI Codex Support & Platform Expansion**
+### v1.5.0 (January 2026)
+**OpenAI Codex Support**
 - Added OpenAI Codex CLI/IDE compatibility
 - Added Codex-specific installation and usage documentation
-- Added Figma MCP integration guides for Claude and Codex
+- Added Codex Figma MCP integration guide (`docs/codex-figma-integration.md`)
+- Updated website to reflect multi-platform support
+- Various terminology fixes and documentation improvements
+
+### v1.4.0 (December 2025)
+**Smithery Registry**
+- Added Smithery badge for discoverability
+- Listed in Smithery skills registry
+
+### v1.3.0 (November 2025)
+**GitHub Pages Website & Distribution**
 - Added GitHub Pages website with interactive demo
-- Added Smithery badge and registry listing
+- Added video demonstration
 - Added auto-rebuild workflow for skill ZIP distribution
-- Various bug fixes and documentation improvements
+- Improved download links and installation flow
+- Reorganized skill packaging
+
+### v1.2.0 (November 2025)
+**Figma Integration**
+- Added Figma integration guide for content designers (`docs/figma-integration.md`)
+- Improved installation instructions for non-technical users
 
 ### v1.1.0 (November 2025)
 **Accessibility & Expanded Frameworks**
