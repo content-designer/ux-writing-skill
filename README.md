@@ -5,7 +5,8 @@
 
 > Scale content quality through AI-powered design system enforcement
 
-**🌐 [View Website](https://content-designer.github.io/ux-writing-skill/)**
+**🌐 [View website](https://content-designer.github.io/ux-writing-skill/)**
+**📄 [Read docs](https://content-designer-ux-writing-skill-26.mintlify.app/introduction)**
 
 An [agent skill](https://agentskills.io/) that enables Claude, Codex, and Cursor to write and edit user-centered interface copy (UX text/microcopy) for digital products. This skill transforms AI assistants into specialized UX writing tools that apply consistent standards, patterns, and voice across your product.
 
