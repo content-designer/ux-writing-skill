@@ -7,7 +7,7 @@ description: Create user-centered, accessible interface copy (microcopy) for dig
 
 Write clear, concise, user-centered interface copy (UX text/microcopy) for digital products and experiences. This skill provides frameworks, patterns, and best practices for creating text that helps users accomplish their goals.
 
-**Compatible with:** Claude Desktop, Claude Code, and Codex (CLI and IDE extensions)
+**Compatible with:** Claude, Codex, Cursor, and other agents that support the agent skills specification.
 
 **Note:** This skill works with Codex CLI/IDE, not ChatGPT. ChatGPT cannot install or use skills.
 
@@ -414,5 +414,4 @@ This skill includes:
 - **templates/error-message-template.md**: Fillable template for writing effective error messages
 - **templates/empty-state-template.md**: Guide for creating helpful empty states
 - **templates/onboarding-flow-template.md**: Framework for designing clear onboarding experiences
-- **docs/claude-figma-integration.md**: Guide for using this skill with Claude Code and Figma MCP
-- **docs/codex-figma-integration.md**: Guide for using this skill with Codex CLI/IDE and Figma MCP
+- **docs/figma-integration.md**: Guide for using this skill with Figma MCP (Claude Code, Codex, and Cursor)
