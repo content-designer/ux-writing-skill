@@ -1,4 +1,4 @@
-# UX Writing Skill for Claude & Codex
+# UX Writing Skill for Claude, Codex & Cursor
 
 [![Run in Smithery](https://smithery.ai/badge/skills/content-designer)](https://smithery.ai/skills?ns=content-designer&utm_source=github&utm_medium=badge)
 
@@ -7,7 +7,7 @@
 
 **🌐 [View Website](https://content-designer.github.io/ux-writing-skill/)**
 
-An Agent Skill that enables Claude and OpenAI Codex to write and edit user-centered interface copy (UX text/microcopy) for digital products. This skill transforms AI assistants into specialized UX writing tools that apply consistent standards, patterns, and voice across your product.
+An Agent Skill that enables Claude, OpenAI Codex, and Cursor to write and edit user-centered interface copy (UX text/microcopy) for digital products. This skill transforms AI assistants into specialized UX writing tools that apply consistent standards, patterns, and voice across your product.
 
 ## The Problem
 
@@ -15,7 +15,7 @@ Design systems solve visual consistency, but content quality still depends on in
 
 ## The Solution
 
-This Agent Skill packages UX writing expertise into a system that Claude can apply automatically. Instead of asking "make this better," you can rely on consistent, evidence-based improvements across your entire product interface.
+This Agent Skill packages UX writing expertise into a system your agent can apply automatically. Instead of asking "make this better," you can rely on consistent, evidence-based improvements across your entire product interface.
 
 ## What Makes This Different
 
@@ -64,157 +64,49 @@ This Agent Skill packages UX writing expertise into a system that Claude can app
 
 ### What You Need
 
-This skill works with **Claude Desktop**, **Claude Code**, and **Codex** (CLI and IDE extensions). Choose the installation method that matches your setup.
+This skill works with **Claude Desktop**, **Claude Code**, **Codex** (CLI and IDE extensions), and **Cursor**. Install it with the [skills CLI](https://skills.sh/docs/cli) — no manual download or file copying required.
 
 **Note:** This skill works with Codex CLI/IDE, not ChatGPT. ChatGPT cannot install or use skills.
 
-### Quick Install (Claude Desktop)
+### Install with the Skills CLI
 
-If you're using Claude Desktop, installation is simple:
+Run this command in your terminal:
 
-1. **Download** [ux-writing-skill.zip](https://github.com/content-designer/ux-writing-skill/raw/main/dist/ux-writing-skill.zip) — this contains just the skill files and documentation
-2. Open **Claude Desktop**
-3. Go to **Settings → Capabilities → Skills**
-4. Click **Upload skill** and select **ux-writing-skill.zip**
-5. **Upload the ZIP file directly** — do not extract it first
-6. Start using the skill immediately!
+```bash
+npx skills add content-designer/ux-writing-skill
+```
 
-The ZIP contains only skill-relevant files: `SKILL.md` plus supporting documentation in `docs/`, `examples/`, `references/`, and `templates/`.
+The CLI downloads the skill and configures it automatically for your agent. Restart your agent or IDE after installation.
 
-### Manual Install (Claude Code)
+**Verify it's working** by asking your agent:
 
-If you're using Claude Code, follow these steps:
-
-**Step 1: Download the Skill**
-
-1. Download [ux-writing-skill.zip](https://github.com/content-designer/ux-writing-skill/raw/main/dist/ux-writing-skill.zip)
-2. Extract the ZIP file (double-click on Mac, right-click → Extract on Windows)
-
-**Step 2: Copy to Skills Folder**
-
-Copy the extracted folder to your Claude skills directory:
-
-- **Mac/Linux**: `~/.claude/skills/`
-- **Windows**: `%USERPROFILE%\.claude\skills\`
-
-Create the directory if it doesn't exist.
-
-**Step 3: Restart Claude Code**
-
-Quit and reopen Claude Code to activate the skill.
-
-**Verify It's Working**
-
-Try asking Claude:
 ```
 Write an error message for when a payment fails
 ```
 
-Claude will apply UX writing best practices and create a clear, empathetic error message.
-
-### Install in Codex (CLI/IDE)
-
-If you're using Codex CLI or IDE extensions, installation is straightforward:
-
-**Step 1: Download the Skill**
-
-1. Download [ux-writing-skill.zip](https://github.com/content-designer/ux-writing-skill/raw/main/dist/ux-writing-skill.zip)
-2. Extract the ZIP file
-
-**Step 2: Copy to Codex Skills Folder**
-
-Copy the extracted folder to your Codex skills directory:
-
-- **Mac/Linux**: `~/.codex/skills/`
-- **Windows**: `%USERPROFILE%\.codex\skills\`
-
-Create the directory if it doesn't exist.
-
-**Step 3: Restart Codex**
-
-Quit and reopen Codex (or your IDE with Codex extension) to activate the skill.
-
-**Verify It's Working**
-
-Try asking in Codex:
-```
-Write an error message for when a payment fails
-```
-
-Codex will apply UX writing best practices and create a clear, empathetic error message.
-
-**Alternative: Use the Built-in Skill Creator**
-
-You can also use Codex's built-in skill creator:
-1. In Codex CLI or IDE, type `$skill-creator`
-2. Provide the path to the extracted skill folder
-3. Follow the prompts to install
+Your agent will apply UX writing best practices and produce a clear, empathetic error message.
 
 ### For Teams: Project Installation
 
-Want your whole team to use this skill automatically?
+Want your whole team to use this skill automatically? Run the CLI from your project root:
 
-**For Claude Code:**
-1. Copy the `ux-writing` folder to `.claude/skills/` in your project's root directory
-2. Commit it to your repository
-3. When teammates pull the code, they'll automatically get the skill
-4. **Note**: Project skills only work when Claude Code is opened in that project folder
+```bash
+npx skills add content-designer/ux-writing-skill
+```
 
-**For Codex:**
-1. Copy the `ux-writing` folder to `.codex/skills/` in your project's root directory
-2. Commit it to your repository
-3. When teammates pull the code, they'll automatically get the skill
+Then commit the installed skill files to your repository. Teammates get the skill when they pull the code.
 
 ## Figma Integration
 
 **Review and improve UX copy directly from your Figma designs!**
 
-Connect this skill to Figma through Claude Code or Codex to analyze mockups, audit copy, and suggest improvements based on UX writing best practices. Perfect for:
+Connect this skill to Figma through your agent to analyze mockups, audit copy, and suggest improvements based on UX writing best practices. Perfect for:
 - Content designers reviewing flows before launch
 - Product teams iterating on copy in designs
 - Design QA and accessibility audits
 - Cross-platform consistency checks
 
-### Quick Start with Claude Code
-
-1. **Connect Figma to Claude Code** (one-time setup):
-   ```bash
-   claude mcp add --transport http figma https://mcp.figma.com/mcp
-   ```
-   Restart Claude Code and authenticate with Figma when prompted.
-
-2. **Share a Figma frame link** with Claude:
-   ```
-   Review the UX copy in this login screen:
-   https://www.figma.com/file/abc123/Design?node-id=123-456
-
-   Check for accessibility, clarity, and tone.
-   ```
-
-3. **Get instant feedback** with specific improvements based on the four quality standards.
-
-**📖 Full Claude Code setup guide:** [docs/claude-figma-integration.md](docs/claude-figma-integration.md)
-
-### Quick Start with Codex
-
-1. **Configure Codex MCP** - Add to `~/.codex/config.toml`:
-   ```toml
-   [features]
-   rmcp_client = true
-
-   [mcp_servers.figma]
-   url = "https://mcp.figma.com/mcp"
-   ```
-
-2. **Install and authenticate**:
-   ```bash
-   npm i -g @openai/codex
-   codex mcp login figma
-   ```
-
-3. **Restart your IDE** and test with a Figma Dev Mode link.
-
-**📖 Full Codex setup guide:** [docs/codex-figma-integration.md](docs/codex-figma-integration.md)
+**📖 Setup guide for all agents:** [docs/figma-integration.md](docs/figma-integration.md)
 
 ## Usage Examples
 
@@ -224,7 +116,7 @@ Connect this skill to Figma through Claude Code or Codex to analyze mockups, aud
 Write an error message for when a payment fails
 ```
 
-Claude applies the skill automatically and generates clear, actionable error messages following best practices.
+Your agent applies the skill automatically and generates clear, actionable error messages following best practices.
 
 ### Editing Existing Copy
 
@@ -232,7 +124,7 @@ Claude applies the skill automatically and generates clear, actionable error mes
 Review this button label: "Submit your information for processing"
 ```
 
-Claude evaluates against the four quality standards and suggests improvements.
+Your agent evaluates against the four quality standards and suggests improvements.
 
 ### Creating Consistent Patterns
 
@@ -242,7 +134,7 @@ Create empty state copy for a task list, keeping voice consistent with:
 - Professional but friendly tone
 ```
 
-Claude applies the appropriate patterns and maintains voice consistency.
+Your agent applies the appropriate patterns and maintains voice consistency.
 
 ### Evaluating Quality
 
@@ -251,11 +143,11 @@ Score this error message:
 "An error occurred. Please try again later."
 ```
 
-Claude uses the content usability checklist to provide detailed scoring and improvement suggestions.
+Your agent uses the content usability checklist to provide detailed scoring and improvement suggestions.
 
 ## How It Works
 
-This skill uses **model-invoked activation** — Claude and Codex automatically decide when to use it based on your request. You don't need to explicitly call the skill; it activates when you:
+This skill uses **model-invoked activation** — Claude, Codex, and Cursor automatically decide when to use it based on your request. You don't need to explicitly call the skill; it activates when you:
 
 - Write or edit interface copy
 - Create error messages, notifications, or empty states
@@ -265,7 +157,7 @@ This skill uses **model-invoked activation** — Claude and Codex automatically 
 
 The AI loads reference materials progressively, using only what's needed for your specific task to maintain efficient context usage.
 
-**In Codex CLI/IDE**, you can also explicitly invoke the skill using `$ux-writing` or through the `/skills` command.
+**In Codex CLI/IDE**, you can also explicitly invoke the skill using `$ux-writing` or through the `/skills` command. **In Cursor**, use `@ux-writing` or reference the skill by name in your prompt.
 
 ## What You'll Learn
 
@@ -336,6 +228,11 @@ Looking for more Agent Skills?
 - Learn how to [create custom skills](https://developers.openai.com/codex/skills/create-skill)
 - Join the [OpenAI Developer Community](https://community.openai.com/) to discuss skills
 
+**For Cursor:**
+- Browse skills on [skills.sh](https://skills.sh)
+- Install skills with the [skills CLI](https://skills.sh/docs/cli)
+- Read about [Cursor Agent Skills](https://docs.cursor.com/skills)
+
 ## Why This Matters
 
 Content is infrastructure. Every button label, error message, and empty state shapes how people understand and use your product. Good UX writing shouldn't depend on having an expert review every string. 
@@ -344,4 +241,4 @@ This skill makes UX writing excellence systematic, scalable, and consistent — 
 
 ---
 
-**Status**: Production-ready • **Version**: 1.5.0 • **Last updated**: January 2026
+**Status**: Production-ready • **Version**: 1.6.0 • **Last updated**: March 2026

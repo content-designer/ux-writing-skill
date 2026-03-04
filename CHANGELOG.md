@@ -5,6 +5,25 @@ All notable changes to the UX Writing Skill will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-03
+
+### Added
+- **Cursor Support**: Full compatibility with Cursor; added to supported agents in README, SKILL.md, and all documentation
+- **Skills CLI Installation**: Replaced per-tool install instructions with a single universal command (`npx skills add content-designer/ux-writing-skill`)
+- **Unified Figma Integration Guide**: New `docs/figma-integration.md` covering Claude Code, Codex, and Cursor in one place
+
+### Changed
+- Updated README title and intro to reference Claude, Codex, and Cursor
+- Simplified Installation section — single CLI command replaces three separate step-by-step guides
+- Simplified Figma Integration section in README to link to the consolidated guide
+- Made usage examples and explanations tool-agnostic throughout README
+
+### Removed
+- `docs/claude-figma-integration.md` (content merged into `docs/figma-integration.md`)
+- `docs/codex-figma-integration.md` (content merged into `docs/figma-integration.md`)
+
+---
+
 ## [1.5.0] - 2026-01
 
 ### Added
