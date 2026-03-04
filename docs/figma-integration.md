@@ -387,7 +387,7 @@ For best results, explicitly mention the UX Writing Skill in your prompts — es
 Using the UX Writing Skill, review this design: [link]
 ```
 
-In **Codex CLI/IDE**, you can also invoke it directly:
+In **Codex**, you can also invoke it directly:
 
 ```
 $ux-writing Review the UX copy in this design: [Figma link]

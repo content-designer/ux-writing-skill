@@ -7,7 +7,7 @@ description: Create user-centered, accessible interface copy (microcopy) for dig
 
 Write clear, concise, user-centered interface copy (UX text/microcopy) for digital products and experiences. This skill provides frameworks, patterns, and best practices for creating text that helps users accomplish their goals.
 
-**Compatible with:** Claude Desktop, Claude Code, Codex (CLI and IDE extensions), and Cursor
+**Compatible with:** Claude, Codex, Cursor, and other agents that support the agent skills specification.
 
 **Note:** This skill works with Codex CLI/IDE, not ChatGPT. ChatGPT cannot install or use skills.
 

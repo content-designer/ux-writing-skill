@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - **Cursor Support**: Full compatibility with Cursor; added to supported agents in README, SKILL.md, and all documentation
 - **Skills CLI Installation**: Replaced per-tool install instructions with a single universal command (`npx skills add content-designer/ux-writing-skill`)
-- **Unified Figma Integration Guide**: New `docs/figma-integration.md` covering Claude Code, Codex, and Cursor in one place
+- **Unified Figma Integration Guide**: New `docs/figma-integration.md` covering Claude, Codex, and Cursor in one place
 
 ### Changed
 - Updated README title and intro to reference Claude, Codex, and Cursor

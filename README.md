@@ -7,7 +7,7 @@
 
 **🌐 [View Website](https://content-designer.github.io/ux-writing-skill/)**
 
-An Agent Skill that enables Claude, OpenAI Codex, and Cursor to write and edit user-centered interface copy (UX text/microcopy) for digital products. This skill transforms AI assistants into specialized UX writing tools that apply consistent standards, patterns, and voice across your product.
+An Agent Skill that enables Claude, Codex, and Cursor to write and edit user-centered interface copy (UX text/microcopy) for digital products. This skill transforms AI assistants into specialized UX writing tools that apply consistent standards, patterns, and voice across your product.
 
 ## The Problem
 
@@ -157,7 +157,7 @@ This skill uses **model-invoked activation** — Claude, Codex, and Cursor autom
 
 The AI loads reference materials progressively, using only what's needed for your specific task to maintain efficient context usage.
 
-**In Codex CLI/IDE**, you can also explicitly invoke the skill using `$ux-writing` or through the `/skills` command. **In Cursor**, use `@ux-writing` or reference the skill by name in your prompt.
+**In Codex**, you can also explicitly invoke the skill using `$ux-writing` or through the `/skills` command. **In Cursor**, use `@ux-writing` or reference the skill by name in your prompt.
 
 ## What You'll Learn
 
