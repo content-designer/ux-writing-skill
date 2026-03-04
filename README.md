@@ -1,4 +1,4 @@
-# UX Writing Skill for Claude, Codex & Cursor
+# Agent Skill for UX Writing
 
 [![Run in Smithery](https://smithery.ai/badge/skills/content-designer)](https://smithery.ai/skills?ns=content-designer&utm_source=github&utm_medium=badge)
 
@@ -7,7 +7,7 @@
 
 **🌐 [View Website](https://content-designer.github.io/ux-writing-skill/)**
 
-An Agent Skill that enables Claude, Codex, and Cursor to write and edit user-centered interface copy (UX text/microcopy) for digital products. This skill transforms AI assistants into specialized UX writing tools that apply consistent standards, patterns, and voice across your product.
+An [agent skill](https://agentskills.io/) that enables Claude, Codex, and Cursor to write and edit user-centered interface copy (UX text/microcopy) for digital products. This skill transforms AI assistants into specialized UX writing tools that apply consistent standards, patterns, and voice across your product.
 
 ## The Problem
 
@@ -15,7 +15,7 @@ Design systems solve visual consistency, but content quality still depends on in
 
 ## The Solution
 
-This Agent Skill packages UX writing expertise into a system your agent can apply automatically. Instead of asking "make this better," you can rely on consistent, evidence-based improvements across your entire product interface.
+This agent skill packages UX writing expertise into a system your agent can apply automatically. Instead of asking "make this better," you can rely on consistent, evidence-based improvements across your entire product interface.
 
 ## What Makes This Different
 
@@ -216,22 +216,27 @@ MIT License — use this skill freely in your projects and teams.
 
 ## Related Work
 
-Looking for more Agent Skills?
+Looking for more agent skills?
 
-**For Claude:**
+- Learn about the standard: [agentskills.io](https://agentskills.io/)
+- Browse skills on [skills.sh](https://skills.sh)
+- Install skills with the [skills CLI](https://skills.sh/docs/cli)
+
+**For Claude**
+
 - Browse the [Claude Code Skills collection](https://github.com/anthropics/skills)
-- Learn about [Agent Skills architecture](https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills)
-- Read [best practices for authoring skills](https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices)
+- Learn about [agent skills architecture](https://claude.com/blog/equipping-agents-for-the-real-world-with-agent-skills)
+- Read [best practices for authoring skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)
 
-**For Codex (CLI/IDE):**
-- Explore [Codex Skills documentation](https://developers.openai.com/codex/skills/)
+**For Codex**
+
+- Explore [Codex Agent Skills documentation](https://developers.openai.com/codex/skills/)
 - Learn how to [create custom skills](https://developers.openai.com/codex/skills/create-skill)
 - Join the [OpenAI Developer Community](https://community.openai.com/) to discuss skills
 
-**For Cursor:**
-- Browse skills on [skills.sh](https://skills.sh)
-- Install skills with the [skills CLI](https://skills.sh/docs/cli)
-- Read about [Cursor Agent Skills](https://docs.cursor.com/skills)
+**For Cursor**
+
+- Read about [Cursor Agent Skills](https://cursor.com/docs/context/skills)
 
 ## Why This Matters
 
