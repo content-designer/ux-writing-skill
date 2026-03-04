@@ -842,7 +842,7 @@
             <h1>UX WRITING SKILL</h1>
             <nav>
                 <a href="https://github.com/content-designer/ux-writing-skill">Repository</a>
-                <a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/claude-figma-integration.md">Figma</a>
+                <a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/figma-integration.md">Figma</a>
                 <a href="https://github.com/content-designer/ux-writing-skill#usage-examples">Documentation</a>
                 <button class="video-trigger" onclick="toggleVideo()">▷</button>
                 <button class="terminal-trigger" onclick="toggleTerminal()">></button>
@@ -854,7 +854,7 @@
         <section class="hero">
             <div class="container">
                 <h2>Write better<br>interface copy</h2>
-                <p class="subtitle">A comprehensive agent skill for Claude and Codex that helps content designers and product teams create accessible, user-centered text following research-backed best practices.</p>
+                <p class="subtitle">A comprehensive agent skill for Claude, Codex, and Cursor that helps content designers and product teams create accessible, user-centered text following research-backed best practices.</p>
                 <div class="cta-buttons">
                     <a href="https://github.com/content-designer/ux-writing-skill/raw/main/dist/ux-writing-skill.zip" class="btn btn-primary">Download skill</a>
                     <a href="https://github.com/content-designer/ux-writing-skill" class="btn btn-secondary">View on GitHub</a>
@@ -961,21 +961,14 @@
         <section class="integrations">
             <div class="container">
                 <h3 class="section-title">Figma integration</h3>
-                <p class="intro">Review and improve UX copy directly from your Figma designs. Works with both Claude Code and Codex. Perfect for content designers and product teams.</p>
+                <p class="intro">Review and improve UX copy directly from your Figma designs. Works with Claude Code, Codex, and Cursor. Perfect for content designers and product teams.</p>
 
                 <div class="feature-grid" style="margin-bottom: 0;">
                     <div class="integration-card" style="background: rgba(186, 205, 217, 0.08); border: 1px solid var(--border); padding: 48px;">
-                        <h4>Claude Code + Figma MCP</h4>
-                        <code>claude mcp add --transport http figma https://mcp.figma.com/mcp</code>
-                        <p class="help-text">Share any Figma frame link with Claude Code to get instant UX writing feedback, accessibility audits, and specific improvements.</p>
-                        <p class="guide-link"><a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/claude-figma-integration.md">Read Claude setup guide →</a></p>
-                    </div>
-
-                    <div class="integration-card" style="background: rgba(186, 205, 217, 0.08); border: 1px solid var(--border); padding: 48px;">
-                        <h4>Codex + Figma MCP</h4>
-                        <code>codex mcp login figma</code>
-                        <p class="help-text">Configure Codex to connect with Figma MCP and review designs using Dev Mode links.</p>
-                        <p class="guide-link"><a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/codex-figma-integration.md">Read Codex setup guide →</a></p>
+                        <h4>Any agent + Figma MCP</h4>
+                        <code>npx skills add content-designer/ux-writing-skill</code>
+                        <p class="help-text">Share any Figma frame link with your agent to get instant UX writing feedback, accessibility audits, and specific improvements. Setup instructions available for Claude Code, Codex, and Cursor.</p>
+                        <p class="guide-link"><a href="https://github.com/content-designer/ux-writing-skill/blob/main/docs/figma-integration.md">Read the Figma setup guide →</a></p>
                     </div>
                 </div>
             </div>
